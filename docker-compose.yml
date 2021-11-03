@@ -5,13 +5,23 @@ services:
     image: mysql:5.7
     container_name: docker-mysql
     environment:
-      MYSQL_DATABASE: swapp
-      MYSQL_USER: swapp
-      MYSQL_PASSWORD: swapp
-      MYSQL_ROOT_PASSWORD: swapp
+      MYSQL_DATABASE: awac
+      MYSQL_USER: awac
+      MYSQL_PASSWORD: awac
+      MYSQL_ROOT_PASSWORD: awac
     ports:
       - "3306:3306"
     restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: awac
+      PMA_PASSWORD: awac
+    ports:
+      - "8080:80"
     
   web:
     build: ./
